@@ -49,6 +49,7 @@ class SendCompromisoEmail extends Command
             $compromisestatus=$use->estatuscompromiso;
             $compromisedias=$use->diffdays;
             $compromisemitaddias=$use->mitaddias;
+            $compromisfechaenvio=$use->fechaenviocorreo;
             $datebegin=$use->created_at;
             $begin = new \DateTime();
             $goal = new \DateTime($compromiso->fechacompromiso);
@@ -73,7 +74,7 @@ class SendCompromisoEmail extends Command
 
         if($compromisestatus!='Finalizado'||$compromisestatus!='Finalizado Atrasado'){
 
-            if($datebeg == $compromisemitaddias||$datebeg == 1){
+            if(date('Y-m-d H:i:00') == $compromisfechaenvio||$datebeg == 1){
         
     foreach($franquiciatario as $user) {
  

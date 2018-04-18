@@ -96,8 +96,11 @@ class CompromisosController extends Controller
 	        $datebeg= $interval->format('%a');
 	        $date=$datebeg+1;
 	        $half= $date/2;
+	        $halfdate= strtotime("-".$half." days",strtotime ($compromiso->fechacompromiso));   
+	        $fechahalf=date('Y-m-d H:i:00',$halfdate);
 	        $compromiso->diffdays=$date;
 	        $compromiso->mitaddias=$half;
+	        $compromiso->fechaenviocorreo=$fechahalf;
 	        $compromiso->save();
 
 			
@@ -200,8 +203,11 @@ class CompromisosController extends Controller
 	        $datebeg= $interval->format('%a');
 	        $date=$datebeg+1;
 	        $half= $date/2;
+	        $halfdate= strtotime("-".$half." days",strtotime ($compromiso->fechacompromiso));   
+	        $fechahalf=date('Y-m-d H:i:00',$halfdate);
 	        $compromiso->diffdays=$date;
 	        $compromiso->mitaddias=$half;
+	        $compromiso->fechaenviocorreo=$fechahalf;
 	        $compromiso->save();
 			
 			return redirect()->route(config('laraadmin.adminRoute') . '.compromisos.index');
